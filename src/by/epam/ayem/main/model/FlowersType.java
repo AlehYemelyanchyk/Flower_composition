@@ -1,13 +1,13 @@
-package by.epam.ayem.main;
+package by.epam.ayem.main.model;
 
-public enum FlowersType  {
+public enum FlowersType {
 
     ROSE("rose", 1), ORCHID("orchid", 2), LILY("lily", 3),
     GLADIOLUS("gladiolus", 4), GERANIUM("geranium", 5),
     HIBISCUS("hibiscus", 6), LAVENDER("lavender", 7);
 
-    private String readable;
-    private int number;
+    private final String readable;
+    private final int number;
 
     FlowersType(String readable, int number) {
         this.readable = readable;
@@ -16,7 +16,7 @@ public enum FlowersType  {
 
     public static boolean hasNumber(int number) {
         for (FlowersType item : values()) {
-            if(item.getNumber() == number){
+            if (item.getNumber() == number) {
                 return true;
             }
         }
@@ -27,15 +27,7 @@ public enum FlowersType  {
         return readable;
     }
 
-    public void setReadable(String readable) {
-        this.readable = readable;
-    }
-
     public int getNumber() {
         return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 }

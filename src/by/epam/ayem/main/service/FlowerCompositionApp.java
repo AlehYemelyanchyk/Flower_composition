@@ -1,4 +1,4 @@
-package by.epam.ayem.main;
+package by.epam.ayem.main.service;
 
 /*Задача 5.
 Создать консольное приложение, удовлетворяющее следующим требованиям:
@@ -13,13 +13,12 @@ package by.epam.ayem.main;
 
 import java.util.Scanner;
 
-public class Client {
-
-    private static Scanner scanner = new Scanner(System.in);
-    private static FlowerShop flowerShop = new FlowerShop();
+public class FlowerCompositionApp {
 
     public void run() {
 
+        Scanner scanner = new Scanner(System.in);
+        FlowerCompositionService flowerCompositionService = new FlowerCompositionService();
         System.out.println("Welcome to our flower shop!");
 
         boolean quit = false;
@@ -40,51 +39,18 @@ public class Client {
 
             switch (choice) {
                 case 1:
-                    addFlower();
+                    flowerCompositionService.addFlower();
                     break;
                 case 2:
-                    addWrapping();
+                    flowerCompositionService.addWrapping();
                     break;
                 case 3:
-                    flowerShop.showComp(flowerShop.getFlowersComp());
+                    flowerCompositionService.showComposition();
                     break;
                 case 0:
                     quit = true;
                     break;
             }
         }
-    }
-
-    private static void addFlower() {
-        System.out.println("Choose a flower type:");
-        flowerShop.showFlowers();
-
-        while (!scanner.hasNextInt()) {
-            scanner.next();
-        }
-        int number = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("Choose the amount of flowers:");
-
-        while (!scanner.hasNextInt()) {
-            scanner.next();
-        }
-        int amount = scanner.nextInt();
-        scanner.nextLine();
-        flowerShop.addFlower(number, amount);
-    }
-
-    private static void addWrapping() {
-        System.out.println("Choose a wrapping type:");
-        flowerShop.showWrapping();
-
-        while (!scanner.hasNextInt()) {
-            scanner.next();
-        }
-        int number = scanner.nextInt();
-        scanner.nextLine();
-
-        flowerShop.addWrapping(number);
     }
 }

@@ -1,12 +1,12 @@
-package by.epam.ayem.main;
+package by.epam.ayem.main.model;
 
 public enum WrappingType {
 
     GLASS_VASE("glass vase", 1), WOODEN_BASKET("wooden basket", 2),
     COLORED_PAPER("colored paper", 3), RIBBONS("ribbons", 4);
 
-    private String readable;
-    private int number;
+    private final String readable;
+    private final int number;
 
     WrappingType(String readable, int number) {
         this.readable = readable;
@@ -26,15 +26,7 @@ public enum WrappingType {
         return readable;
     }
 
-    public void setReadable(String readable) {
-        this.readable = readable;
-    }
-
     public int getNumber() {
         return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 }
