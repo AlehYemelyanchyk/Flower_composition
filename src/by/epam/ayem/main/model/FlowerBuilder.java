@@ -16,13 +16,8 @@ public class FlowerBuilder {
     private Flower flower = new Flower();
 
     public FlowerBuilder addFlowerType(int number) {
-        if (FlowersType.hasNumber(number)) {
-            for (FlowersType flowersType : FlowersType.values()) {
-                if (flowersType.getNumber() == number) {
-                    flower.setFlowersType(flowersType);
-                    break;
-                }
-            }
+        if ((number - 1) >= 0 && (number - 1) < FlowerType.values().length) {
+            flower.setFlowerType(FlowerType.values()[number]);
         } else {
             System.out.println("There are no flowers with such number.");
         }

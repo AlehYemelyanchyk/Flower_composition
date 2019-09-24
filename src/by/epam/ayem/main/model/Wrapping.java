@@ -13,7 +13,7 @@ package by.epam.ayem.main.model;
 
 public class Wrapping {
 
-    WrappingType wrappingType;
+    private WrappingType wrappingType;
 
     protected Wrapping() {
     }

@@ -16,12 +16,8 @@ public class WrappingBuilder {
     private Wrapping wrapping = new Wrapping();
 
     public WrappingBuilder addWrappingType(int number) {
-        if (WrappingType.hasNumber(number)) {
-            for (WrappingType wrappingType : WrappingType.values()) {
-                if (wrappingType.getNumber() == number) {
-                    wrapping.setWrappingType(wrappingType);
-                }
-            }
+        if ((number - 1) >= 0 && (number - 1) < WrappingType.values().length) {
+            wrapping.setWrappingType(WrappingType.values()[number - 1]);
         } else {
             System.out.println("There are no wrapping with such number.");
         }

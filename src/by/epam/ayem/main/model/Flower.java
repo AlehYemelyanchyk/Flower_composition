@@ -13,18 +13,18 @@ package by.epam.ayem.main.model;
 
 public class Flower {
 
-    FlowersType flowersType;
-    int amount;
+    private FlowerType flowerType;
+    private int amount;
 
     protected Flower() {
     }
 
-    public FlowersType getFlowersType() {
-        return flowersType;
+    public FlowerType getFlowerType() {
+        return flowerType;
     }
 
-    protected void setFlowersType(FlowersType flowersType) {
-        this.flowersType = flowersType;
+    protected void setFlowerType(FlowerType flowerType) {
+        this.flowerType = flowerType;
     }
 
     public int getAmount() {
@@ -37,7 +37,7 @@ public class Flower {
 
     @Override
     public String toString() {
-        return amount + " " + flowersType.getReadable();
+        return amount + " " + flowerType.getReadable();
     }
 
 
