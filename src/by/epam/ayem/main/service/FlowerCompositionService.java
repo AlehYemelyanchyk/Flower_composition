@@ -19,9 +19,8 @@ import java.util.Scanner;
 public class FlowerCompositionService {
 
     private Scanner scanner = new Scanner(System.in);
-    private FlowerComposition flowerComposition = new FlowerComposition();
 
-    public void addFlower() {
+    public void addFlower(FlowerComposition flowerComposition) {
         System.out.println("Choose a flower type:");
         showFlowers();
 
@@ -31,18 +30,18 @@ public class FlowerCompositionService {
             System.out.println("Choose the amount of flowers:");
 
             int amount = getInteger();
-            addFlower(number, amount);
+            addFlower(flowerComposition, number, amount);
         }
     }
 
-    public void addWrapping() {
+    public void addWrapping(FlowerComposition flowerComposition) {
         System.out.println("Choose a wrapping type:");
         showWrapping();
 
         int number = getInteger();
 
         if (number != 0) {
-            addWrapping(number);
+            addWrapping(flowerComposition, number);
         }
     }
 
@@ -56,25 +55,25 @@ public class FlowerCompositionService {
     }
 
     private void showFlowers() {
-        for (FlowersType flowersType : FlowersType.values()) {
-            System.out.println(flowersType.getNumber() + ". " + flowersType.getReadable());
+        for (int i = 0; i < FlowerType.values().length; i++) {
+            System.out.println((i + 1) + ". " + FlowerType.values()[i]);
         }
         System.out.println("0. Back.");
     }
 
-    private void addFlower(int number, int amount) {
+    private void addFlower(FlowerComposition flowerComposition, int number, int amount) {
         Flower flower = new FlowerBuilder().addFlowerType(number).addFlowersAmount(amount).build();
         flowerComposition.getFlowers().add(flower);
     }
 
     private void showWrapping() {
-        for (WrappingType wrappingType : WrappingType.values()) {
-            System.out.println(wrappingType.getNumber() + ". " + wrappingType.getReadable());
+        for (int i = 0; i < WrappingType.values().length; i++) {
+            System.out.println((i + 1) + ". " + WrappingType.values()[i].toString().toLowerCase().replace("_", " "));
         }
         System.out.println("0. Back.");
     }
 
-    private void addWrapping(int number) {
+    private void addWrapping(FlowerComposition flowerComposition, int number) {
         if (flowerComposition.getFlowers().size() == 0) {
             System.out.println("The flower composition has no flowers to wrap.");
         } else {
@@ -83,7 +82,7 @@ public class FlowerCompositionService {
         }
     }
 
-    public void showComposition() {
+    public void showComposition(FlowerComposition flowerComposition) {
         ListIterator<Flower> flowerIterator = flowerComposition.getFlowers().listIterator();
         if (flowerComposition.getFlowers().size() == 0) {
             System.out.println("No flowers in the composition.");
@@ -98,7 +97,8 @@ public class FlowerCompositionService {
                 }
             }
             if (flowerComposition.getWrapping() != null) {
-                System.out.println("in " + flowerComposition.getWrapping().getWrappingType().getReadable() + "\n");
+                System.out.println("in " +
+                        flowerComposition.getWrapping().getWrappingType().toString().toLowerCase().replace("_", " "));
             }
         }
     }

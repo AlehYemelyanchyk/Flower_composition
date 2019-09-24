@@ -11,14 +11,17 @@ package by.epam.ayem.main.service;
     Цветочная композиция. Реализовать приложение, позволяющее создавать цветочные композиции
 (объект, представляющий собой цветочную композицию). Составляющими цветочной композиции являются цветы и упаковка. */
 
+import by.epam.ayem.main.model.FlowerComposition;
 import java.util.Scanner;
 
 public class FlowerCompositionApp {
 
+    private static Scanner scanner = new Scanner(System.in);
+    private static FlowerComposition flowerComposition = new FlowerComposition();
+    private static FlowerCompositionService flowerCompositionService = new FlowerCompositionService();
+
     public void run() {
 
-        Scanner scanner = new Scanner(System.in);
-        FlowerCompositionService flowerCompositionService = new FlowerCompositionService();
         System.out.println("Welcome to our flower shop!");
 
         boolean quit = false;
@@ -39,13 +42,13 @@ public class FlowerCompositionApp {
 
             switch (choice) {
                 case 1:
-                    flowerCompositionService.addFlower();
+                    flowerCompositionService.addFlower(flowerComposition);
                     break;
                 case 2:
-                    flowerCompositionService.addWrapping();
+                    flowerCompositionService.addWrapping(flowerComposition);
                     break;
                 case 3:
-                    flowerCompositionService.showComposition();
+                    flowerCompositionService.showComposition(flowerComposition);
                     break;
                 case 0:
                     quit = true;
